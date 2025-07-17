@@ -13,7 +13,7 @@ app.use(cors({
 }));
 
 
-mongoose.connect("mongodb+srv://teo:123@superkids.uykkxhl.mongodb.net/test")
+mongoose.connect("mongodb+srv://teo:123@superkids.uykkxhl.mongodb.net/")
   .then(() => {
     console.log("Connected to database");
   })
