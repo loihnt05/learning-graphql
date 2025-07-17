@@ -6,12 +6,20 @@ const cors = require("cors");
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000", 
+  credentials: true, 
+}));
 
-mongoose.connect("mongodb+srv://teo:123@superkids.uykkxhl.mongodb.net/")
-mongoose.connection.once("open", () => {
-  console.log("Connected to database");
-})
+
+mongoose.connect("mongodb+srv://teo:123@superkids.uykkxhl.mongodb.net/test")
+  .then(() => {
+    console.log("Connected to database");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err.message);
+  });
 
 app.use("/graphql", graphqlHTTP({
     schema: schema,
